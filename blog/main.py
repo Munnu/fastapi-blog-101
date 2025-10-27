@@ -1,5 +1,5 @@
 import contextlib
-from typing import Sequence
+from typing import List, Sequence
 
 from fastapi import FastAPI, HTTPException, status
 from sqlmodel import select
@@ -57,7 +57,7 @@ def create_a_blog_entry(request: schemas.Blog, db: SessionDep) -> models.Blog:
     db.refresh(new_blog)
     return new_blog
 
-@app.get('/blog')
+@app.get('/blog', response_model=List[schemas.ShowBlog])
 def show_all_blog_entries(db: SessionDep) -> Sequence[models.Blog]:
     blogs = db.exec(select(models.Blog)).all()
     return blogs
