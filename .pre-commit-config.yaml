@@ -1,6 +1,7 @@
-https: https://github.com/charliermarsh/ruff-pre-commit
-rev: v0.2.2
-hooks:
-- id: ruff
-    args: [--fix]
-- id: ruff-format
+repos: # <-- MANDATORY: Defines the list of repositories for hooks
+  - repo: https://github.com/charliermarsh/ruff-pre-commit # <-- The actual repository URL key
+    rev: v0.2.2
+    hooks:
+      - id: ruff
+        args: [--fix] # <-- Correctly indented under 'ruff'
+      - id: ruff-format
