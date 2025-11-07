@@ -14,6 +14,10 @@ services:
     ports:
       - 5000:5000
 
+# manually adding a sqlite3 database file to persist data the name of the file is blog.db
+    volumes:
+      - ./blog.db:/app/blog.db   # Mount your SQLite database from local to container
+
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
 # start the database before your application. The `db-data` volume persists the
@@ -46,4 +50,10 @@ services:
 # secrets:
 #   db-password:
 #     file: db/password.txt
+
+# adding compose watch to auto reload the server on code changes
+    develop:
+      watch:
+        - action: rebuild
+          path: .
 
