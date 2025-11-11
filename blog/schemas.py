@@ -1,8 +1,10 @@
 from pydantic import BaseModel
 
+
 class Blog(BaseModel):
-    title: str 
+    title: str
     body: str
+
 
 class ShowBlog(Blog):
     pass
