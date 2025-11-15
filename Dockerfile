@@ -22,11 +22,17 @@ ARG UID=10001
 RUN adduser \
     --disabled-password \
     --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
+    --home "/home/appuser" \
+    --shell "/bin/bash" \
     --no-create-home \
     --uid "${UID}" \
     appuser
+
+# Create the home directory and ensure appuser owns it
+RUN mkdir -p /home/appuser && chown appuser /home/appuser
+
+# Switch to the non-privileged user to run the application.
+USER appuser
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
