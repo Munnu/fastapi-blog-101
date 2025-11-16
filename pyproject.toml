@@ -23,3 +23,7 @@ ignore = [
 typeCheckingMode = "strict"
 pythonVersion = "3.12"
 exclude = [".venv"]
+
+[tool.pytest.ini_options]
+# This ensures the project root is always available for imports.
+pythonpath = ["."]

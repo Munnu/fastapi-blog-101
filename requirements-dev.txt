@@ -1,3 +1,4 @@
+httpx
 pre-commit
 pyright
 ruff
