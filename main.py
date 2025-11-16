@@ -10,7 +10,7 @@ def index():
 
 
 @app.get("/blog")
-def published(limit: int | None, published: bool = False, sort: str | None = None):
+def published(limit: int | None = None, published: bool = False, sort: str | None = None):
     if published:
         return {"data": f"{limit} published blogs from the db"}
 
@@ -29,8 +29,8 @@ def show(id: int):
 
 
 @app.get("/blog/{id}/comments")
-def comments(id: int, limit:int=10):
-    return {"data": {"1", "2"}, "limit": limit}
+def comments(id: int, limit: int=10):
+    return {"data": ["1", "2"], "limit": limit}
 
 
 class Blog(BaseModel):
